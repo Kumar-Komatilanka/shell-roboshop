@@ -1,35 +1,30 @@
-#!/bin/bash
-
 USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
-LOGS_FOLDER="/var/log/roboshop-logs"
-SCRIPT_NAME=$(echo $0 | cut -d "." -f1)
-LOG_FILE="$LOGS_FOLDER/$SCRIPT_NAME.log"
-SCRIPT_DIR=$PWD
-
+#Defining logs files to save the output
+LOGS_FOLDER="/var/log/roboshops-logs" 
+SCRIPT_NAME=$(echo $0 | cut -d "." -f1) #We are cutting .sh from the script name(14-logs.sh)
+LOG_File=$LOGS_FOLDER/$SCRIPT_NAME.log
 mkdir -p $LOGS_FOLDER
-echo "Script started executing at: $(date)" | tee -a $LOG_FILE
-
-# check the user has root priveleges or not
+echo "your script is running at $(date)" | tee -a $LOG_File
+#Defining script to know whether user is a root user or not
 if [ $USERID -ne 0 ]
 then
-    echo -e "$R ERROR:: Please run this script with root access $N" | tee -a $LOG_FILE
-    exit 1 #give other than 0 upto 127
+echo -e "$R Error: You should be root user to install programme $N" | tee -a $LOG_File
+exi 1
 else
-    echo "You are running with root access" | tee -a $LOG_FILE
+echo -e "$G you are running as root user" | tee -a $LOG_File
 fi
-
-# validate functions takes input as exit status, what command they tried to install
+#Defining function to check whether programme was installed successfully or not
 VALIDATE(){
     if [ $1 -eq 0 ]
     then
-        echo -e "$2 is ... $G SUCCESS $N" | tee -a $LOG_FILE
+    echo -e " $G $2 was successful" $N | tee -a $LOG_File
     else
-        echo -e "$2 is ... $R FAILURE $N" | tee -a $LOG_FILE
-        exit 1
+    echo -e "$R $2 was failure"  $N| tee -a $LOG_File
+    exit 1
     fi
 }
 
