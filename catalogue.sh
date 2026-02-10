@@ -80,7 +80,7 @@ VALIDATE $? "Installing MongoDB Client"
 STATUS=$(mongosh --host mongodb.komatilanka.store --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
 if [ $STATUS -lt 0 ] #if data already exists then output will be more that 0 so here logic is if output less than 0 then it will load the data
 then
-    mongosh --host mongodb.komatilanka.store </app/db/master-data.js &>>$LOG_FILE
+    mongosh --host mongodb.komatilanka.store </app/db/master-data.js &>>$LOG_File
     VALIDATE $? "Loading data into MongoDB"
 else
     echo -e "Data is already loaded ... $Y SKIPPING $N"
