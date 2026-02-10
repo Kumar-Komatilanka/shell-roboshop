@@ -2,7 +2,7 @@
 
 AMI_ID="ami-0220d79f3f480ecf5"
 SG_ID="sg-036539c70b5670efc" # replace with your SG ID
-INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "frontend")
+INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "frontend")
 ZONE_ID="Z06357861OMJD4EZG747V" # replace with your ZONE ID
 DOMAIN_NAME="komatilanka.store" # replace with your domain
 
