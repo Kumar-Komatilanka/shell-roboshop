@@ -7,6 +7,7 @@ N="\e[0m"
 LOGS_FOLDER="/var/log/roboshops-logs" 
 SCRIPT_NAME=$(echo $0 | cut -d "." -f1) #We are cutting .sh from the script name(14-logs.sh)
 LOG_File=$LOGS_FOLDER/$SCRIPT_NAME.log
+SCRIPT_DIR=$(pwd)
 mkdir -p $LOGS_FOLDER
 echo "your script is running at $(date)" | tee -a $LOG_File
 #Defining script to know whether user is a root user or not
