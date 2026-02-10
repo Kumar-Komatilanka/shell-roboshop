@@ -59,7 +59,7 @@ cd /app
 unzip /tmp/catalogue.zip &>>$LOG_File
 VALIDATE $? "unzipping catalogue"
 
-npm install &>>$LOG_FILE
+npm install &>>$LOG_File
 VALIDATE $? "Installing Dependencies"
 
 cp $SCRIPT_DIR/catalogue.service /etc/systemd/system/catalogue.service
