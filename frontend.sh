@@ -14,7 +14,7 @@ echo "your script is running at $(date)" | tee -a $LOG_File
 if [ $USERID -ne 0 ]
 then
 echo -e "$R Error: You should be root user to install programme $N" | tee -a $LOG_File
-exi 1
+exit 1
 else
 echo -e "$G you are running as root user" | tee -a $LOG_File
 fi
